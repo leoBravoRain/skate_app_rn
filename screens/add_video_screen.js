@@ -131,7 +131,7 @@ class Add_Video extends Component {
     // Alert.alert(String(this.state.location.id));
 
     // // Update to real API
-    const url_API = 'http://192.168.1.12:8000/videos_location/'+ this.props.navigation.state.params.location.id + '/';
+    const url_API = 'https://skateappapi.pythonanywhere.com/videos_location/'+ this.props.navigation.state.params.location.id + '/';
 
     // // Crete form for post
     const form = new FormData();

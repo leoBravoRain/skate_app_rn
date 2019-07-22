@@ -11,7 +11,7 @@ import {
   // NetInfo,
   // Button,
   Picker,
-  // ProgressBarAndroid
+  ProgressBarAndroid
 } from 'react-native';
 
 import { Button } from 'react-native-elements';
@@ -54,7 +54,8 @@ class HelloWorldApp extends Component {
   componentDidMount(){
 
     // get places from API
-        const url_server = "http://192.168.1.12:8000/place/";
+        // const url_server = "http://192.168.1.12:8000/place/";
+        const url_server = 'https://skateappapi.pythonanywhere.com/place'
         fetch(url_server)
               .then((response) => response.json())
               .then((responseJson) => {
@@ -90,13 +91,13 @@ class HelloWorldApp extends Component {
 
   }
 
-  // Manage danger map
-  dangers_map(){
+  // // Manage danger map
+  // dangers_map(){
 
-    // Navitage to next page
-    this.props.navigation.push("Map"); 
+  //   // Navitage to next page
+  //   this.props.navigation.push("Map"); 
 
-  }
+  // }
 
   // manage click on button 
   manage_click(){
@@ -136,43 +137,57 @@ class HelloWorldApp extends Component {
 
               </Text>
 
-              <Picker
-                // style = {styles.buttonStyle}
-                selectedValue={this.state.place}
-                style={{height: 50, width: 100, color: 'white', backgroundColor: 'rgba(255,100,100,0.1)'  }}
-                // itemStyle={{ backgroundColor: 'red', }}
-                itemTextStyle={{ fontSize: 180, color: 'white' }}
-                onValueChange={(itemValue, itemIndex) =>
-                  this.setState({place: itemValue, place_name: list_places_names[itemIndex],})
-              }>
+              {
 
-                {
-                  this.state.places.map((item) =>{
+                this.state.get_places
 
-                    return(
+                ? 
 
-                      <Picker.Item  label={item.name} value={item.id} key={item.name}/>
+                <View>
+              
+                  <Picker
+                    // style = {styles.buttonStyle}
+                    selectedValue={this.state.place}
+                    style={{height: 50, width: 100, color: 'white', backgroundColor: 'rgba(255,100,100,0.1)'  }}
+                    // itemStyle={{ backgroundColor: 'red', }}
+                    itemTextStyle={{ fontSize: 180, color: 'white' }}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({place: itemValue, place_name: list_places_names[itemIndex],})
+                  }>
 
-                    );
+                    {
+                      this.state.places.map((item) =>{
 
-                  })
+                        return(
 
-                }
+                          <Picker.Item  label={item.name} value={item.id} key={item.name}/>
 
-              </Picker>
+                        );
 
-              <Button
+                      })
 
-                raised
+                    }
 
-                title = {"Explorar " + this.state.place_name}
+                  </Picker>
 
-                // onPress = {this.dangers_map.bind(this)}
-                onPress = {()=> this.manage_click()}
+                  <Button
 
-                buttonStyle={styles.buttonStyle}
+                    raised
 
-              />
+                    title = {"Explorar " + this.state.place_name}
+
+                    onPress = {()=> this.manage_click()}
+
+                    buttonStyle={styles.buttonStyle}
+
+                  />
+
+                </View>
+
+              :
+
+              <ProgressBarAndroid/>
+            }
 
             </View>
 

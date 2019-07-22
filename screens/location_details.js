@@ -109,7 +109,11 @@ export default class Location_Details extends Component {
     // Fetch data from server
     // fetch('https://touristapi.pythonanywhere.com/videos_location/' + this.props.navigation.state.params.marker.id + '/')
     // fetch('http://127.0.0.1:8000/videos_location/1/')
-    fetch('http://192.168.1.12:8000/videos_location/'+ this.props.navigation.state.params.marker.id )
+    const url_API = 'https://skateappapi.pythonanywhere.com/videos_location/' + this.props.navigation.state.params.marker.id;
+
+    console.log(url_API);
+
+    fetch(url_API)
           .then((response) => response.json())
           .then((responseJson) => {
 
@@ -212,10 +216,10 @@ export default class Location_Details extends Component {
   vote_by_video(){
 
     // Update to real API
-    const url_API = 'http://192.168.1.12:8000/vote_by_video/'
+    const url_API = 'https://skateappapi.pythonanywhere.com/vote_by_video/' + this.state.video.id + '/';
 
     // Update data
-    fetch(url_API + this.state.video.id + '/')
+    fetch(url_API)
           .then((response) => response.json())
           .then((responseJson) => {
 
