@@ -156,7 +156,8 @@ class Add_Video extends Component {
     if(link != null){
 
       // Validate link
-      if((link.includes('https://youtu.be/') || link.includes('https://www.youtube.com/'))){
+      // if((link.includes('https://youtu.be/') || link.includes('https://www.youtube.com/'))){
+      if(link.includes('https://www.instagram.com')){
 
         send = true;
 
@@ -170,12 +171,12 @@ class Add_Video extends Component {
         // user message
         Alert.alert(
             // 'Conección a internet',
-            'Video de Youtube',
+            'Video de Instagram',
             // 'Para poder usar nuestra app, debes estar conectado a internet',
-            'Por el momento, solo podemos subir videos que esten subidos a Youtube :(',
+            'Por el momento, solo podemos subir videos que esten subidos a Instagram :(',
             [
               // {text: 'Me conectaré'},
-              {text: 'Subiré mi video a Youtube'},
+              {text: 'Subiré mi video a Instagram'},
             ],
             { cancelable: false }
           )
@@ -230,16 +231,16 @@ class Add_Video extends Component {
 
         <Text style = {{padding: 0, maxWidth: '90%', color: 'black', fontWeight: 'bold', fontSize: 15, textAlign: 'center'}}>
 
-          Por el momento, solo podemos subir videos de Youtube.
+          Por el momento, solo podemos subir videos de INSTAGRAM.
 
-          Para eso, solo debes copiar el link de tu video de Youtube y pegarlo en el siguiente recuadro.
+          Para eso, solo debes copiar el link de tu video de Instagram y pegarlo en el siguiente recuadro.
 
         </Text>
 
         <Input
           onChangeText={(text) => this.setState({link: text})}
-          placeholder='Link de video (DEBE ser de Youtube)'
-          leftIcon={{ type: 'font-awesome', name: 'youtube' }}
+          placeholder='Link de video (debe ser de Instagram)'
+          leftIcon={{ type: 'font-awesome', name: 'instagram' }}
         />
 
         <Input

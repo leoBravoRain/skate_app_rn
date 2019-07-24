@@ -53,7 +53,7 @@ class Main_Map extends Component {
   // Options for header bar
   static navigationOptions = ({ navigation }) => {
     return {
-      title: "Explorando la ciudad",
+      title: navigation.state.params.place_name,
       // headerTitleStyle: {
       //     textAlign: 'center',
       //     backgroundColor: 'red',
@@ -213,6 +213,11 @@ class Main_Map extends Component {
 
                   >
 
+                    <View style={{ borderColor: 'white', borderWidth:2, backgroundColor: "#84B391", padding: 4, borderRadius: 100}}>
+
+                       <Text style = {{color: 'white'}}>{marker.name}</Text>
+
+                     </View>
                     
 
                   </MapView.Marker>

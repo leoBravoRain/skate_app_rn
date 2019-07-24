@@ -104,7 +104,7 @@ class HelloWorldApp extends Component {
 
 
     // Navitage to next page
-    this.props.navigation.push("Map", {place: this.state.place});  
+    this.props.navigation.push("Map", {place: this.state.place, place_name: this.state.place_name});  
 
   }
 
